@@ -16,6 +16,10 @@ let app = new Vue({
 window.mountApp = () => {
   app.$mount('#app')
 }
-if (window.STYLE_READY) {
+if (process.env.NODE_ENV === 'production') {
+  if (window.STYLE_READY) {
+    window.mountApp()
+  }
+} else {
   window.mountApp()
 }
